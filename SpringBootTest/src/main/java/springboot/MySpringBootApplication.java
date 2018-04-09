@@ -14,9 +14,11 @@ import springboot.controller.ControllerMarker;
 @PropertySource("application.properties")
 public class MySpringBootApplication {
 
+
+
     public static  void main(String...args){
 
-        SpringApplication.run(MySpringBootApplication.class,args);
+       // SpringApplication.run(MySpringBootApplication.class,args);
     }
 
 }
