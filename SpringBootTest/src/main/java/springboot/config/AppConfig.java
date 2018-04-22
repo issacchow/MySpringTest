@@ -1,5 +1,7 @@
 package springboot.config;
 
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
@@ -11,6 +13,7 @@ import javax.swing.*;
 import static springboot.util.LogUtil.*;
 
 @PropertySource("application.properties")
+@EnableConfigurationProperties(value = { MyConfig.class })
 @Component
 public class AppConfig extends BeanInitLogger{
 
@@ -28,6 +31,9 @@ public class AppConfig extends BeanInitLogger{
         log("order 1");
         return new MyBean();
     }
+
+
+
 
 
 
