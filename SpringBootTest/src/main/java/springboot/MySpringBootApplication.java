@@ -6,12 +6,17 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 import springboot.config.SpringConfigMarker;
 import springboot.controller.ControllerMarker;
+import springboot.service.ServiceMarker;
 
 import static springboot.util.LogUtil.log;
 
 
 @SpringBootApplication(
-        scanBasePackageClasses = {SpringConfigMarker.class, ControllerMarker.class}
+        scanBasePackageClasses = {
+                SpringConfigMarker.class,
+                ControllerMarker.class,
+                ServiceMarker.class
+        }
 )
 @PropertySource("application.properties")
 public class MySpringBootApplication {

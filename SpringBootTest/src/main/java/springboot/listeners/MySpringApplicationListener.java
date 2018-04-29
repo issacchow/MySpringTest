@@ -1,12 +1,14 @@
 package springboot.listeners;
 
 import org.springframework.boot.context.event.ApplicationReadyEvent;
-import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import springboot.config.MyConfig;
-import springboot.util.LogUtil;
+import springboot.dto.EmailDto;
+import springboot.data.PagingRequest;
+import springboot.data.PagingResult;
+import springboot.service.EmailMyISAMService;
 
 import static springboot.util.LogUtil.log;
 
@@ -36,6 +38,16 @@ public class MySpringApplicationListener implements ApplicationListener {
 
             MyConfig config = context.getBean(MyConfig.class);
             log("%s",config.getPort());
+
+            EmailMyISAMService service = context.getBean(EmailMyISAMService.class);
+            PagingRequest request = new PagingRequest();
+            request.setPage(1);
+            request.setPage_size(10);
+
+            PagingResult<EmailDto> emailDtoPagingResult = service.selectByPaging(request);
+            log("-- total emails:%s -- ",emailDtoPagingResult.getTotal_records());
+
+            service.generateEmails(Integer.MAX_VALUE);
         }
     }
 }

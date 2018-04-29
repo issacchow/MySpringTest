@@ -1,4 +1,4 @@
-package springboot.module.myModule;
+package springboot.service.myModule;
 
 /**
  * Created by IssacChow on 18/4/11.
