@@ -14,6 +14,7 @@ import static springboot.util.LogUtil.*;
 
 @PropertySource("application.properties")
 @EnableConfigurationProperties(value = { MyConfig.class })
+@Import(value={DataSourceConfig.class})
 @Component
 public class AppConfig extends BeanInitLogger{
 
