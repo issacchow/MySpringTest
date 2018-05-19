@@ -47,7 +47,7 @@ public class MySpringApplicationListener implements ApplicationListener {
             PagingResult<EmailDto> emailDtoPagingResult = service.selectByPaging(request);
             log("-- total emails:%s -- ",emailDtoPagingResult.getTotal_records());
 
-            service.generateEmails(Integer.MAX_VALUE);
+            //service.generateEmails(Integer.MAX_VALUE);
         }
     }
 }
