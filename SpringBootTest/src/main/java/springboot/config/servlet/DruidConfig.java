@@ -1,22 +1,19 @@
+package springboot.config.servlet;
+
 import com.alibaba.druid.support.http.StatViewServlet;
-import com.alibaba.druid.support.http.WebStatFilter;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-
 public class DruidConfig {
 
 
     /**
-
      * 注册一个StatViewServlet
 
      * @return
-
      */
-
     @Bean
     public ServletRegistrationBean DruidStatViewServlet(){
 

@@ -1,11 +1,11 @@
-package springboot.config;
+package springboot.config.custom;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import springboot.util.BeanInitLogger;
 
 
 @ConfigurationProperties(prefix = "myconfig")
-public class MyConfig {
+public class MyConfig extends BeanInitLogger {
 
     private String url;
     private int port;

@@ -1,4 +1,4 @@
-package springboot.config;
+package springboot.config.db;
 
 import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;

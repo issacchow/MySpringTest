@@ -6,10 +6,21 @@ import static springboot.util.LogUtil.log;
 
 public abstract class BeanInitLogger {
 
+    private static Integer totalBeans = 0;
+    private int beanIndex = -1;
+
     private String name = this.getClass().getName();
-    public BeanInitLogger(){
-        log("%s  -- init",name);
+
+    public BeanInitLogger() {
+
+
+        synchronized (totalBeans) {
+            this.beanIndex = ++totalBeans;
+        }
+        log("%s  -- init , bean index:%s", name,this.beanIndex);
     }
+
+
 
     @PostConstruct
     final public void init(){

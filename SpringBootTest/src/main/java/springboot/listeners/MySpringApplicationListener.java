@@ -4,7 +4,7 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
-import springboot.config.MyConfig;
+import springboot.config.custom.MyConfig;
 import springboot.dto.EmailDto;
 import springboot.data.PagingRequest;
 import springboot.data.PagingResult;

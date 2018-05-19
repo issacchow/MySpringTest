@@ -1,22 +1,31 @@
 package springboot.config;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.*;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import springboot.beans.MyBean;
+import springboot.config.db.DataSourceConfig;
+import springboot.config.custom.MyConfig;
 import springboot.util.BeanInitLogger;
 
-import javax.swing.*;
+import javax.annotation.Resource;
 
 import static springboot.util.LogUtil.*;
 
-@PropertySource("application.properties")
+/**
+ * 主配置
+ * 所有扩展配置类(不能使用注射成为Bead的注解)均从这里开始: 通过@Import注解实现
+ */
 @EnableConfigurationProperties(value = { MyConfig.class })
 @Import(value={DataSourceConfig.class})
 @Component
-public class AppConfig extends BeanInitLogger{
+public class MainConfig extends BeanInitLogger{
+
+
+    @Resource
+    MyConfig myConfig;
+
 
 
     @Bean("myBean")
@@ -34,6 +43,14 @@ public class AppConfig extends BeanInitLogger{
     }
 
 
+    //测试其他配置bean加载情况
+    @Bean("testResourceBean")
+    @Order(3)
+    public MyBean testResource(){
+
+        log("myConfig==null:%s",myConfig==null);
+        return new MyBean();
+    }
 
 
 
