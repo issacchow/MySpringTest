@@ -4,6 +4,7 @@ package springboot;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
+import springboot.advice.AdviceMarker;
 import springboot.config.SpringConfigMarker;
 import springboot.controller.ControllerMarker;
 import springboot.service.ServiceMarker;
@@ -15,10 +16,11 @@ import static springboot.util.LogUtil.log;
         scanBasePackageClasses = {
                 SpringConfigMarker.class,
                 ControllerMarker.class,
-                ServiceMarker.class
+                ServiceMarker.class,
+                AdviceMarker.class
         }
 )
-@PropertySource("application.properties")
+//@PropertySource("application.properties")
 public class MySpringBootApplication {
 
 
