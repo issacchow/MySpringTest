@@ -1,4 +1,4 @@
-package springboot.dto;
+package springboot.dto.email;
 
 import springboot.dal.emailMyISAM.EmailMyISAMEntity;
 

@@ -1,19 +1,15 @@
 package springboot.service.impl;
 
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 import springboot.dal.emailMyISAM.EmailMyISAMEntity;
-import springboot.dto.EmailDto;
+import springboot.dto.email.EmailDto;
 import springboot.dal.emailMyISAM.EmailMyISAMMapper;
-import springboot.data.PagingRequest;
-import springboot.data.PagingResult;
+import springboot.data.request.PagingRequest;
+import springboot.data.result.PagingResult;
 import springboot.service.EmailMyISAMService;
 
 import javax.annotation.Resource;
-import java.util.Date;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 import static springboot.util.LogUtil.log;

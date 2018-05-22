@@ -17,8 +17,7 @@ import static springboot.util.LogUtil.*;
  * 主配置
  * 所有扩展配置类(不能使用注射成为Bead的注解)均从这里开始: 通过@Import注解实现
  */
-@EnableConfigurationProperties(value = { MyConfig.class })
-@Import(value={DataSourceConfig.class})
+@Import(value={DataSourceConfig.class,MyConfig.class})
 @Component
 public class MainConfig extends BeanInitLogger{
 

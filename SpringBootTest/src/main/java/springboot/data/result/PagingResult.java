@@ -1,4 +1,4 @@
-package springboot.data;
+package springboot.data.result;
 
 
 import java.io.Serializable;

@@ -1,4 +1,4 @@
-package springboot.data;
+package springboot.data.result;
 
 /**
  * Service处理结果数据

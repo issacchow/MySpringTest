@@ -1,8 +1,8 @@
 package springboot.service;
 
-import springboot.dto.EmailDto;
-import springboot.data.PagingRequest;
-import springboot.data.PagingResult;
+import springboot.dto.email.EmailDto;
+import springboot.data.request.PagingRequest;
+import springboot.data.result.PagingResult;
 
 public interface EmailMyISAMService {
 

@@ -5,9 +5,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationEvent;
 import org.springframework.context.ApplicationListener;
 import springboot.config.custom.MyConfig;
-import springboot.dto.EmailDto;
-import springboot.data.PagingRequest;
-import springboot.data.PagingResult;
+import springboot.dto.email.EmailDto;
+import springboot.data.request.PagingRequest;
+import springboot.data.result.PagingResult;
 import springboot.service.EmailMyISAMService;
 
 import static springboot.util.LogUtil.log;

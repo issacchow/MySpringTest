@@ -8,17 +8,24 @@ import org.springframework.http.server.ServerHttpRequest;
 import org.springframework.http.server.ServerHttpResponse;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.servlet.mvc.method.annotation.JsonViewResponseBodyAdvice;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseBodyAdvice;
+import springboot.data.web.ResponseData;
 
 @ControllerAdvice(basePackageClasses = {WeixinResponseAdvice.class })
-public class WeixinResponseAdvice extends JsonViewResponseBodyAdvice {
+public class WeixinResponseAdvice implements ResponseBodyAdvice {
+
 
     @Override
-    protected void beforeBodyWriteInternal(MappingJacksonValue bodyContainer, MediaType contentType, MethodParameter returnType, ServerHttpRequest request, ServerHttpResponse response) {
-        super.beforeBodyWriteInternal(bodyContainer, contentType, returnType, request, response);
+    public boolean supports(MethodParameter methodParameter, Class aClass) {
+        //returnType.getMethod().getAnnotation()
+        //可根据注解进行拦截
+        return  true;
     }
 
     @Override
-    public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
-        return  false;
+    public Object beforeBodyWrite(Object controllerReturnValue, MethodParameter methodParameter, MediaType mediaType, Class aClass, ServerHttpRequest serverHttpRequest, ServerHttpResponse serverHttpResponse) {
+        ResponseData responseData = new ResponseData();
+        responseData.setData(controllerReturnValue);
+        return responseData;
     }
 }

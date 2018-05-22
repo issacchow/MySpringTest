@@ -4,7 +4,7 @@ package springboot.controller.app.email;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import springboot.data.PagingRequest;
+import springboot.data.request.PagingRequest;
 import springboot.service.EmailMyISAMService;
 
 import javax.annotation.Resource;

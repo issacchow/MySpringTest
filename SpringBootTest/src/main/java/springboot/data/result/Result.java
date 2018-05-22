@@ -5,7 +5,7 @@
  *  @date 2016年6月3日 下午3:51:05 
  *  
  */
-package springboot.data;
+package springboot.data.result;
 
 
 import java.io.Serializable;

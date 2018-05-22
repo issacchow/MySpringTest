@@ -42,6 +42,10 @@ public class DataSourceConfig extends BeanInitLogger {
         return proxy;
     }
 
+    /**
+     * 私有类,用于注入writeDataSource,readDataSource
+     * 否则无法直接手动创建实例时注入这两个属性
+     */
     private class DataSourceProxy extends AbstractRoutingDataSource {
 
         @Resource(name="writeDataSource")

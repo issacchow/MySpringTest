@@ -3,7 +3,9 @@ package springboot.config.custom;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import springboot.util.BeanInitLogger;
 
-
+/**
+ * 配置映射
+ */
 @ConfigurationProperties(prefix = "myconfig")
 public class MyConfig extends BeanInitLogger {
 
