@@ -3,7 +3,6 @@ package springboot;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.PropertySource;
 import springboot.advice.AdviceMarker;
 import springboot.config.SpringConfigMarker;
 import springboot.controller.ControllerMarker;
@@ -11,7 +10,9 @@ import springboot.service.ServiceMarker;
 
 import static springboot.util.LogUtil.log;
 
-
+/**
+ * 一般应用程序(单数据源)
+ */
 @SpringBootApplication(
         scanBasePackageClasses = {
                 SpringConfigMarker.class,
@@ -21,7 +22,7 @@ import static springboot.util.LogUtil.log;
         }
 )
 //@PropertySource("application.properties")
-public class MySpringBootApplication {
+public class GeneralApplication {
 
 
     public static  void main(String...args){
@@ -29,7 +30,7 @@ public class MySpringBootApplication {
         int b = a<<15;
         log("%s",b);
 
-       SpringApplication.run(MySpringBootApplication.class,args);
+       SpringApplication.run(GeneralApplication.class,args);
     }
 
 }
