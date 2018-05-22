@@ -70,7 +70,19 @@
                 </configuration>
             </plugin>
         </plugins>
+
+        <!--将src目录里的xml文件编译进class下-->
+        <resources>
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**/*.xml</include>
+                </includes>
+            </resource>
+        </resources>
     </build>
+
+
 
 
 </project>
