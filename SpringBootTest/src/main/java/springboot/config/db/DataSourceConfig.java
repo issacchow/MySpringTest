@@ -4,6 +4,7 @@ import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Primary;
 import org.springframework.jdbc.datasource.lookup.AbstractRoutingDataSource;
 import springboot.util.BeanInitLogger;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+@Configuration
 public class DataSourceConfig extends BeanInitLogger {
 
 
@@ -34,55 +36,20 @@ public class DataSourceConfig extends BeanInitLogger {
      *
      * @return
      */
-    @Bean
+    @Bean("PrimaryDataSource")
     @Primary
     public DataSource buildDataSourceProxy(
     ) {
         DataSourceProxy proxy = new DataSourceProxy();
+        DataSource writeDataSource = buildWriteDataSource();
+        DataSource readDataSource = buildReadDataSource();
+        proxy.addDataSource(DataSourceType.WriteDataSource.toString(),writeDataSource);
+        proxy.addDataSource(DataSourceType.ReadDataSource.toString(),readDataSource);
+        //设置默认数据源
+        DataSourceSwitcher.swtich(DataSourceType.WriteDataSource);
+        proxy.setDefaultTargetDataSource(writeDataSource);
+
         return proxy;
-    }
-
-    /**
-     * 私有类,用于注入writeDataSource,readDataSource
-     * 否则无法直接手动创建实例时注入这两个属性
-     */
-    private class DataSourceProxy extends AbstractRoutingDataSource {
-
-        @Resource(name="writeDataSource")
-        DataSource writeDataSource;
-
-        @Resource(name="readDataSource")
-        DataSource readDataSource;
-
-        Map<Object,Object> mapDataSorce;
-
-        public DataSourceProxy(DataSource... dataSources) {
-          mapDataSorce = new HashMap<>();
-
-        }
-
-        @Override
-        protected Object determineCurrentLookupKey() {
-            return "writeDataSource";
-        }
-
-        @Override
-        protected DataSource determineTargetDataSource() {
-          return (DataSource)mapDataSorce.get(determineCurrentLookupKey());
-        }
-
-        public void addDataSource(String key,DataSource dataSource){
-            this.mapDataSorce.put(key,dataSource);
-        }
-
-
-        @Override
-        public void afterPropertiesSet() {
-            this.mapDataSorce.put("writeDataSource", writeDataSource);
-            this.mapDataSorce.put("readDataSource", readDataSource);
-
-            this.setTargetDataSources(mapDataSorce);
-        }
     }
 
 }
